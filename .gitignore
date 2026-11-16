@@ -1,0 +1,4 @@
+node_modules/
+dist/
+# Régénéré après la publication de @mercy-pay/node (en local, il pointe vers ../mercy-pay-node).
+package-lock.json
