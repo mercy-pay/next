@@ -44,6 +44,45 @@ export async function pay(orderId: string) {
 
 Côté client, un simple formulaire suffit : `<form action={pay.bind(null, order.id)}><button>Payer</button></form>`. Pour un bouton avec état de chargement, voyez [`@mercy-pay/react`](https://github.com/mercy-pay/react).
 
+## Afficher le formulaire dans votre page
+
+Créez une session intégrée dans une action serveur, puis affichez-la avec [`@mercy-pay/react`](https://github.com/mercy-pay/react). Votre site doit être déclaré dans **Paramètres > Paiements** ; en sandbox, `localhost` marche tout de suite.
+
+```ts
+// app/checkout/actions.ts
+'use server';
+
+import { MercyPay } from '@mercy-pay/next';
+
+const mercyPay = new MercyPay(process.env.MERCY_PAY_API_KEY!);
+
+export async function startPayment(orderId: string): Promise<string> {
+  const order = await getOrder(orderId);
+  const session = await mercyPay.checkoutSessions.create(
+    { amount: order.total, currency: 'XAF', ui_mode: 'embedded', metadata: { order_id: order.id } },
+    { idempotencyKey: `order-${order.id}` },
+  );
+
+  return session.client_secret!;
+}
+```
+
+```tsx
+// app/checkout/[orderId]/payment.tsx
+'use client';
+
+import { EmbeddedCheckout } from '@mercy-pay/react';
+import { useRouter } from 'next/navigation';
+
+export function Payment({ clientSecret, orderId }: { clientSecret: string; orderId: string }) {
+  const router = useRouter();
+
+  return <EmbeddedCheckout clientSecret={clientSecret} onSuccess={() => router.push(`/commandes/${orderId}`)} />;
+}
+```
+
+La page serveur appelle `startPayment(orderId)` et passe le secret à `<Payment>`. La commande se confirme toujours avec le webhook `payment.succeeded`, ci-dessous.
+
 ## Recevoir les webhooks
 
 ```ts

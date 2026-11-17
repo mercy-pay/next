@@ -1,21 +1,39 @@
 {
   "name": "@mercy-pay/next",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Mercy Pay pour Next.js : recevoir les webhooks signés dans une route de l'App Router.",
-  "keywords": ["mercy pay", "next.js", "webhooks", "paiement", "mobile money"],
+  "keywords": [
+    "mercy pay",
+    "next.js",
+    "webhooks",
+    "paiement",
+    "mobile money"
+  ],
   "homepage": "https://docs.mercy-pay.com",
-  "repository": { "type": "git", "url": "git+https://github.com/mercy-pay/next.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mercy-pay/next.git"
+  },
   "bugs": "https://github.com/mercy-pay/next/issues",
   "license": "MIT",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "sideEffects": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
@@ -23,7 +41,7 @@
     "prepublishOnly": "npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
-    "@mercy-pay/node": "^0.1.0"
+    "@mercy-pay/node": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.19.25",
