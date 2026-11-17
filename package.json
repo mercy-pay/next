@@ -44,7 +44,7 @@
     "@mercy-pay/node": "^0.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.19.25",
+    "@types/node": "^26.6.6",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
   }
