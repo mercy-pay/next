@@ -1,6 +1,6 @@
 {
   "name": "@mercy-pay/next",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Mercy Pay pour Next.js : recevoir les webhooks signés dans une route de l'App Router.",
   "keywords": [
     "mercy pay",
@@ -41,7 +41,7 @@
     "prepublishOnly": "npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
-    "@mercy-pay/node": "^0.2.0"
+    "@mercy-pay/node": "^0.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.19.25",

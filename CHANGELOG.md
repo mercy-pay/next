@@ -1,5 +1,9 @@
 # Journal des changements
 
+## 0.3.0 (18 novembre 2026)
+
+- S'appuie sur `@mercy-pay/node` 0.3 : paramètres typés, catalogue, `waitForFinalStatus()` et numéros de test. **À vérifier** : un objet incomplet passé à une méthode peut ne plus compiler.
+
 ## 0.2.0 (17 novembre 2026)
 
 - S'appuie sur `@mercy-pay/node` 0.2 : sessions intégrées (`ui_mode`, `client_secret`) et sites autorisés.
